@@ -51,8 +51,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Login to Docker Hub
-        run: docker login -u sowbarnigaa -p dckr_pat_AZAiui0zuL-6Z6JN58Y8LaX76hU 
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
       - name: Build Container image
-        run: docker build -t demo:latest .
+        run: docker build -t ${{ secrets.DOCKER_REPO }}:latest .
       - name: Publish Docker image
-        run: docker push demo
+        run: docker push ${{ secrets.DOCKER_REPO }}
